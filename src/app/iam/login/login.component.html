@@ -1,0 +1,32 @@
+<section class="login-page">
+  <p-card>
+    <ng-template pTemplate="title">
+      <h1>welcome</h1>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <div style="height: 60px">
+        <p-messages></p-messages>
+      </div>
+      <form #loginForm="ngForm" (ngSubmit)="submitLogin(loginForm.value)">
+        <div class="p-fluid grid">
+          <div class="field col-12 md:col-4" style="margin-bottom: 2em">
+            <span class="p-float-label">
+              <input id="login" type="text" pInputText ngModel name="login">
+              <label for="login">Login</label>
+            </span>
+          </div>
+          <div class="field col-12 md:col-4" style="margin-bottom: 2em">
+            <span class="p-float-label">
+              <input id="password" type="password" pInputText ngModel name="password">
+              <label for="login">Password</label>
+            </span>
+          </div>
+          <div class="field col-12 md:col-4 mb-1">
+            <button type="submit" pButton label="Submit"></button>
+          </div>
+        </div>
+
+      </form>
+    </ng-template>
+  </p-card>
+</section>

@@ -1,0 +1,35 @@
+<div *ngIf="(isLoading$ | async) else content">
+<p-progressSpinner/>
+</div>
+<ng-template #content>
+  <ng-container *ngIf="(error$ | async)?.length">Error!</ng-container>
+  <ng-container *ngIf="(messages$ | async) as messages">
+
+    <section style="display: flex; flex-direction: column">
+      <ng-container *ngFor="let message of messages">
+        <p-card [id]="message.id" [ngStyle]="{'margin-bottom':'1.2em'}">
+           <ng-template pTemplate="title">
+             <div class="card-title">
+               <p-avatar shape="circle"
+                         size="large"
+                         [label]="message.author.substring(0,2)"
+               />
+               <span class="card-name">{{message.author}}</span>
+             </div>
+
+            </ng-template>
+            <ng-template pTemplate="content">
+              <p class="card-message">{{message.text}}</p>
+            </ng-template>
+            <ng-template pTemplate="footer">
+              <div class="card-action">
+                <ul>
+                  <li><button (click)="likePost(message.id)">👍</button> <span> {{message.likes}}</span></li>
+                </ul>
+              </div>
+              </ng-template>
+        </p-card>
+      </ng-container>
+    </section>
+    </ng-container>
+</ng-template>

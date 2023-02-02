@@ -1,0 +1,11 @@
+<form #messageForm="ngForm" name="messageForm" (ngSubmit)="submitMessage(messageForm.value)" class="post-form">
+  <textarea
+    pInputTextarea
+    name="message"
+    ngModel [autoResize]="true"
+    style="width: 95%; height: 100%"
+    placeholder="Write a message..."
+  >
+  </textarea>
+  <button pButton class="p-button-raised">Send</button>
+</form>
